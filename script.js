@@ -1,43 +1,14 @@
 "use strict";
 
-let list = {
-  value: 1,
-  next: {
-    value: 2,
-    next: {
-      value: 3,
-      next: {
-        value: 4,
-        next: null,
-      },
-    },
-  },
-};
+console.log(sum(1)(2)); //== 3; // 1 + 2
+sum(1)(2)(3); //== 6; // 1 + 2 + 3
+sum(5)(-1)(2); //== 6
+sum(6)(-1)(-2)(-3); //== 0
+sum(0)(1)(2)(3)(4)(5); //== 15
 
-printList(list);
-
-// Цикл
-/* function printList(list) {
-  let obj = Object.assign({}, list);
-  let result = [];
-
-  while (true) {
-    result.push(obj.value);
-    if (obj.next != null) {
-      obj = obj.next;
-    } else {
-      break;
-    }
-  }
-
-  for (let i = result.length - 1; i >= 0; i--) {
-    console.log(result[i]);
-  }
-} */
-
-// Рекурсия
-function printList(list) {
-  // console.log(list.value)
-  if(list.next != null) printList(list.next)
-  console.log(list.value)
+function sum(operand1) {
+  return function(operand2) {
+    // console.log(operand1 + operand2);
+    return sum(operand1 + operand2);
+  };
 }
