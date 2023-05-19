@@ -1,19 +1,6 @@
 "use strict";
 
-class FormatError extends SyntaxError {
-  constructor(message) {
-    super(message)
-    // this.stack = super.stack
-    this.name = `FormatError`
-  }
-}
-
-let err = new FormatError("ошибка форматирования");
-
-alert( err.message ); // ошибка форматирования
-alert( err.name ); // FormatError
-alert( err.stack ); // stack
-
-alert( err instanceof FormatError ); // true
-alert( err instanceof SyntaxError ); // true (потому что наследует от SyntaxError)
-
+showCircle(150, 150, 100).then(div => {
+  div.classList.add('message-ball');
+  div.append("Hello, world!");
+});
